@@ -1,0 +1,19 @@
+services:
+  astro-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solocarbon-tools
+    ports:
+      - "4334:4323"
+    restart: unless-stopped
+    networks:
+      - frontend
+    environment:
+      - USE_CLOUDFLARE=false
+      - NODE_ENV=production
+      - SITE_URL=https://tools.solocarbon.com
+
+networks:
+  frontend:
+    external: true

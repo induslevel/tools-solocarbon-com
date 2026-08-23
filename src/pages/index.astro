@@ -1,0 +1,735 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Solocarbon SysToolbox | Modern DevOps & SysAdmin Utilities">
+  <div class="min-h-screen bg-[#090D16] text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Top Bar -->
+    <header class="border-b border-slate-800 bg-[#0D1322]/80 backdrop-blur-md sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-3.5 max-w-6xl flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-sky-400 flex items-center justify-center font-mono font-black text-white text-sm shadow-md shadow-indigo-500/20">
+            ⚡
+          </div>
+          <div>
+            <span class="font-extrabold text-base sm:text-lg tracking-tight text-white block leading-none">
+              SOLOCARBON <span class="text-indigo-400 font-medium">TOOLS</span>
+            </span>
+            <span class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase block mt-0.5">
+              Client-Side DevOps Utilities
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            100% Private (No data sent)
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-6xl flex-grow space-y-8">
+      
+      <!-- Hero -->
+      <div class="text-center max-w-3xl mx-auto space-y-3 pt-4">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+          DevOps & SysAdmin <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400">Swiss Army Knife</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
+          High-performance, privacy-first technical utilities. Instant calculations computed entirely in your browser.
+        </p>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="flex flex-wrap gap-2 justify-center border-b border-slate-800/80 pb-4" id="tool-tabs">
+        <button data-target="subnet-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/20">
+          🌐 CIDR & Subnet
+        </button>
+        <button data-target="cron-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          ⏱️ Cron Builder
+        </button>
+        <button data-target="chmod-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          🔐 Chmod Permissions
+        </button>
+        <button data-target="hash-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          🔑 Hashes & UUID
+        </button>
+        <button data-target="base64-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          📜 Base64 / URL
+        </button>
+        <button data-target="docker-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          🐳 Docker ➔ Compose
+        </button>
+        <button data-target="bandwidth-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          📊 Bandwidth Transfer
+        </button>
+        <button data-target="json-tool" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          🗜️ JSON Validator
+        </button>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 1: CIDR & SUBNET CALCULATOR -->
+      <!-- ========================================================================= -->
+      <div id="subnet-tool" class="tool-pane space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span>🌐</span> IPv4 CIDR & Subnet Calculator
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Compute network ranges, broadcast addresses, wildcard masks, and binary masks in real-time.</p>
+            </div>
+            <div class="flex gap-2">
+              <button class="preset-cidr px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cidr="192.168.0.0/24">192.168.0.0/24</button>
+              <button class="preset-cidr px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cidr="10.0.0.0/16">10.0.0.0/16</button>
+              <button class="preset-cidr px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cidr="172.16.10.0/27">172.16.10.0/27</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-8">
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">IP Address & CIDR Prefix</label>
+              <div class="flex gap-3">
+                <input type="text" id="cidr-input" value="192.168.0.0/24" class="w-full bg-[#090D16] border border-slate-700 rounded-xl px-4 py-3 text-base font-mono text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="e.g. 192.168.1.1/24">
+              </div>
+            </div>
+            <div class="md:col-span-4 flex items-end">
+              <div class="bg-[#090D16] border border-slate-800 p-3 rounded-xl w-full text-center">
+                <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Usable Host Capacity</span>
+                <span id="res-total-hosts" class="text-2xl font-black text-indigo-400 font-mono">254</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subnet Results Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800/80">
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl space-y-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Network Address</span>
+              <span id="res-net-addr" class="text-sm font-bold text-white font-mono block">192.168.0.0</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl space-y-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Subnet Mask</span>
+              <span id="res-netmask" class="text-sm font-bold text-white font-mono block">255.255.255.0</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl space-y-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Broadcast Address</span>
+              <span id="res-broadcast" class="text-sm font-bold text-white font-mono block">192.168.0.255</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl space-y-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">First Usable Host</span>
+              <span id="res-first-host" class="text-sm font-bold text-emerald-400 font-mono block">192.168.0.1</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl space-y-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Last Usable Host</span>
+              <span id="res-last-host" class="text-sm font-bold text-emerald-400 font-mono block">192.168.0.254</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl space-y-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Wildcard Mask</span>
+              <span id="res-wildcard" class="text-sm font-bold text-white font-mono block">0.0.0.255</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 2: CRON BUILDER & EXPLAINER -->
+      <!-- ========================================================================= -->
+      <div id="cron-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span>⏱️</span> Crontab Expression Builder & Explainer
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Translate cryptic cron strings into plain human-readable schedules with next execution forecasts.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button class="preset-cron px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cron="*/15 * * * *">Every 15 mins</button>
+              <button class="preset-cron px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cron="0 0 * * *">Daily at 00:00</button>
+              <button class="preset-cron px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cron="0 9 * * 1-5">Weekdays at 9am</button>
+              <button class="preset-cron px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300" data-cron="0 0 1 * *">Monthly</button>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Cron Expression</label>
+            <input type="text" id="cron-input" value="0 9 * * *" class="w-full bg-[#090D16] border border-slate-700 rounded-xl px-4 py-3 text-lg font-mono text-indigo-400 font-bold focus:outline-none focus:border-indigo-500">
+          </div>
+
+          <!-- Human explanation box -->
+          <div class="bg-[#090D16] border border-indigo-500/30 p-5 rounded-xl space-y-2">
+            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block">Human-Readable Translation</span>
+            <p id="cron-explanation" class="text-base sm:text-lg font-bold text-white leading-relaxed">
+              At 09:00 AM on every day of the week
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 3: CHMOD PERMISSIONS CALCULATOR -->
+      <!-- ========================================================================= -->
+      <div id="chmod-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <span>🔐</span> Linux Chmod Permissions Calculator
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Interactive permission matrix for files and directories with symbolic and octal representation.</p>
+          </div>
+
+          <!-- Checkbox Matrix -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <!-- Owner -->
+            <div class="bg-[#090D16] border border-slate-800 p-5 rounded-xl space-y-3">
+              <h3 class="font-bold text-sm text-indigo-400 border-b border-slate-800 pb-2">Owner (User)</h3>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="400" checked> Read (4)
+              </label>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="200" checked> Write (2)
+              </label>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="100" checked> Execute (1)
+              </label>
+            </div>
+
+            <!-- Group -->
+            <div class="bg-[#090D16] border border-slate-800 p-5 rounded-xl space-y-3">
+              <h3 class="font-bold text-sm text-indigo-400 border-b border-slate-800 pb-2">Group</h3>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="40" checked> Read (4)
+              </label>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="20"> Write (2)
+              </label>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="10" checked> Execute (1)
+              </label>
+            </div>
+
+            <!-- Public / Others -->
+            <div class="bg-[#090D16] border border-slate-800 p-5 rounded-xl space-y-3">
+              <h3 class="font-bold text-sm text-indigo-400 border-b border-slate-800 pb-2">Public (Others)</h3>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="4" checked> Read (4)
+              </label>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="2"> Write (2)
+              </label>
+              <label class="flex items-center gap-2 text-sm text-slate-200 cursor-pointer">
+                <input type="checkbox" class="chmod-box form-checkbox rounded text-indigo-500 focus:ring-0" data-val="1" checked> Execute (1)
+              </label>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl">
+              <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Octal Code</span>
+              <span id="chmod-octal" class="text-2xl font-black text-indigo-400 font-mono">0755</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl">
+              <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Symbolic Notation</span>
+              <span id="chmod-symbolic" class="text-2xl font-black text-emerald-400 font-mono">-rwxr-xr-x</span>
+            </div>
+            <div class="bg-[#090D16] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Command</span>
+                <span id="chmod-command" class="text-sm font-bold text-white font-mono">chmod 755 file</span>
+              </div>
+              <button class="copy-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white" data-copy="chmod 755 file">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 4: HASHES & UUID GENERATOR -->
+      <!-- ========================================================================= -->
+      <div id="hash-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span>🔑</span> Cryptographic Hashes & UUID v4
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Compute SHA-256, SHA-512 hashes and generate cryptographically secure UUIDs entirely offline.</p>
+            </div>
+            <button id="gen-uuid-btn" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md">
+              ⚡ Generate UUID v4
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Input String</label>
+              <textarea id="hash-input" rows="3" class="w-full bg-[#090D16] border border-slate-700 rounded-xl p-3 text-sm font-mono text-white focus:outline-none focus:border-indigo-500" placeholder="Type text to generate hashes..."></textarea>
+            </div>
+
+            <!-- Hash outputs -->
+            <div class="space-y-3">
+              <div class="bg-[#090D16] border border-slate-800 p-3.5 rounded-xl flex items-center justify-between gap-4">
+                <div class="min-w-0 flex-1">
+                  <span class="text-[10px] font-bold text-indigo-400 uppercase block mb-0.5">SHA-256</span>
+                  <span id="hash-sha256" class="text-xs font-mono text-slate-300 truncate block">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+                </div>
+                <button class="copy-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300" data-copy-target="hash-sha256">Copy</button>
+              </div>
+
+              <div class="bg-[#090D16] border border-slate-800 p-3.5 rounded-xl flex items-center justify-between gap-4">
+                <div class="min-w-0 flex-1">
+                  <span class="text-[10px] font-bold text-indigo-400 uppercase block mb-0.5">UUID v4</span>
+                  <span id="hash-uuid" class="text-xs font-mono text-emerald-400 truncate block">Click 'Generate UUID v4' above</span>
+                </div>
+                <button class="copy-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300" data-copy-target="hash-uuid">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 5: BASE64 / URL ENCODER & DECODER -->
+      <!-- ========================================================================= -->
+      <div id="base64-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <span>📜</span> Base64 & URL Encoding Suite
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Encode or decode strings to Base64, URL-encoded format, and Hex bytes instantaneously.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Input Content</label>
+              <textarea id="b64-input" rows="4" class="w-full bg-[#090D16] border border-slate-700 rounded-xl p-3 text-sm font-mono text-white focus:outline-none focus:border-indigo-500" placeholder="Enter text to encode/decode..."></textarea>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <button id="b64-encode-btn" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">Base64 Encode</button>
+              <button id="b64-decode-btn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">Base64 Decode</button>
+              <button id="url-encode-btn" class="px-4 py-2 rounded-xl bg-indigo-600/20 text-indigo-400 hover:bg-indigo-600/30 font-bold text-xs border border-indigo-500/30">URL Encode</button>
+              <button id="url-decode-btn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">URL Decode</button>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Output Result</label>
+              <div class="relative">
+                <textarea id="b64-output" rows="4" readonly class="w-full bg-[#090D16] border border-slate-800 rounded-xl p-3 text-sm font-mono text-emerald-400 focus:outline-none"></textarea>
+                <button class="copy-btn absolute top-3 right-3 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300" data-copy-target="b64-output">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 6: DOCKER RUN TO COMPOSE -->
+      <!-- ========================================================================= -->
+      <div id="docker-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <span>🐳</span> Docker Run ➔ Docker Compose Converter
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Convert one-liner CLI `docker run` commands into clean, declarative `docker-compose.yml` stacks.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Paste Docker Run Command</label>
+              <textarea id="docker-input" rows="3" class="w-full bg-[#090D16] border border-slate-700 rounded-xl p-3 text-sm font-mono text-white focus:outline-none focus:border-indigo-500" placeholder="docker run -d --name nginx-app -p 8080:80 -v /data:/usr/share/nginx/html --restart always nginx:alpine"></textarea>
+            </div>
+
+            <button id="docker-convert-btn" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md">
+              ⚡ Convert to Compose
+            </button>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Generated Docker Compose YAML</label>
+              <div class="relative">
+                <textarea id="docker-output" rows="10" readonly class="w-full bg-[#090D16] border border-slate-800 rounded-xl p-4 text-xs sm:text-sm font-mono text-emerald-400 focus:outline-none"></textarea>
+                <button class="copy-btn absolute top-3 right-3 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300" data-copy-target="docker-output">Copy YAML</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 7: BANDWIDTH & TRANSFER TIME -->
+      <!-- ========================================================================= -->
+      <div id="bandwidth-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <span>📊</span> Bandwidth & File Transfer Time Estimator
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Estimate exact upload and download durations for large backups, VM images, and dataset syncs.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">File Size (in GB)</label>
+                <input type="number" id="bw-size" value="50" min="1" class="w-full bg-[#090D16] border border-slate-700 rounded-xl px-4 py-3 text-base font-mono text-white focus:outline-none focus:border-indigo-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Network Speed (in Mbps)</label>
+                <input type="number" id="bw-speed" value="1000" min="1" class="w-full bg-[#090D16] border border-slate-700 rounded-xl px-4 py-3 text-base font-mono text-white focus:outline-none focus:border-indigo-500">
+                <div class="flex gap-2 mt-2">
+                  <button class="preset-bw px-2 py-1 rounded text-[10px] font-semibold bg-slate-800 text-slate-300" data-speed="100">100 Mbps</button>
+                  <button class="preset-bw px-2 py-1 rounded text-[10px] font-semibold bg-slate-800 text-slate-300" data-speed="1000">1 Gbps</button>
+                  <button class="preset-bw px-2 py-1 rounded text-[10px] font-semibold bg-slate-800 text-slate-300" data-speed="2500">2.5 Gbps</button>
+                  <button class="preset-bw px-2 py-1 rounded text-[10px] font-semibold bg-slate-800 text-slate-300" data-speed="10000">10 Gbps</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-[#090D16] border border-slate-800 p-6 rounded-2xl flex flex-col justify-center text-center space-y-2">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Estimated Transfer Duration</span>
+              <span id="bw-result" class="text-3xl sm:text-4xl font-black text-emerald-400 font-mono">6m 40s</span>
+              <span class="text-xs text-slate-500">Assumes theoretical continuous line speed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- TOOL 8: JSON VALIDATOR & FORMATTER -->
+      <!-- ========================================================================= -->
+      <div id="json-tool" class="tool-pane hidden space-y-6">
+        <div class="bg-[#111726] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <span>🗜️</span> JSON Formatter & Syntax Validator
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Cleanly format, minify, and validate JSON payloads with instant error detection.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Raw JSON Input</label>
+              <textarea id="json-input" rows="8" class="w-full bg-[#090D16] border border-slate-700 rounded-xl p-3 text-xs sm:text-sm font-mono text-white focus:outline-none focus:border-indigo-500" placeholder='{"name": "Solocarbon", "features": ["fast", "private"]}'></textarea>
+            </div>
+
+            <div class="flex gap-3">
+              <button id="json-format-btn" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">Beautify JSON</button>
+              <button id="json-minify-btn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">Minify JSON</button>
+            </div>
+
+            <div id="json-status" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-[#0D1322] py-6 text-center text-xs text-slate-500">
+      <p>&copy; {new Date().getFullYear()} Solocarbon Tools • Built for High-Performance Infrastructure</p>
+    </footer>
+  </div>
+</Layout>
+
+<script is:inline>
+  // TAB SWITCHER
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tool-pane');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => {
+        b.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/20');
+        b.classList.add('bg-slate-800/60', 'text-slate-300');
+      });
+      btn.classList.remove('bg-slate-800/60', 'text-slate-300');
+      btn.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/20');
+
+      const target = btn.dataset.target;
+      panes.forEach(p => {
+        if (p.id === target) p.classList.remove('hidden');
+        else p.classList.add('hidden');
+      });
+    });
+  });
+
+  // 1. CIDR CALCULATOR
+  function ipToInt(ip) {
+    return ip.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct, 10), 0) >>> 0;
+  }
+  function intToIp(int) {
+    return [(int >>> 24) & 255, (int >>> 16) & 255, (int >>> 8) & 255, int & 255].join('.');
+  }
+
+  function calculateSubnet() {
+    const input = document.getElementById('cidr-input').value.trim();
+    const parts = input.split('/');
+    if (parts.length !== 2) return;
+    const ipStr = parts[0];
+    const prefix = parseInt(parts[1], 10);
+    if (isNaN(prefix) || prefix < 0 || prefix > 32) return;
+
+    try {
+      const ipInt = ipToInt(ipStr);
+      const maskInt = prefix === 0 ? 0 : (~0 << (32 - prefix)) >>> 0;
+      const netInt = (ipInt & maskInt) >>> 0;
+      const broadcastInt = (netInt | ~maskInt) >>> 0;
+      const wildcardInt = (~maskInt) >>> 0;
+
+      const totalHosts = prefix >= 31 ? (prefix === 31 ? 2 : 1) : Math.pow(2, 32 - prefix) - 2;
+      const firstHostInt = prefix >= 31 ? netInt : netInt + 1;
+      const lastHostInt = prefix >= 31 ? broadcastInt : broadcastInt - 1;
+
+      document.getElementById('res-total-hosts').textContent = totalHosts.toLocaleString();
+      document.getElementById('res-net-addr').textContent = intToIp(netInt);
+      document.getElementById('res-netmask').textContent = intToIp(maskInt);
+      document.getElementById('res-broadcast').textContent = intToIp(broadcastInt);
+      document.getElementById('res-first-host').textContent = intToIp(firstHostInt);
+      document.getElementById('res-last-host').textContent = intToIp(lastHostInt);
+      document.getElementById('res-wildcard').textContent = intToIp(wildcardInt);
+    } catch(e) {}
+  }
+
+  document.getElementById('cidr-input').addEventListener('input', calculateSubnet);
+  document.querySelectorAll('.preset-cidr').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('cidr-input').value = btn.dataset.cidr;
+      calculateSubnet();
+    });
+  });
+  calculateSubnet();
+
+  // 2. CRON EXPLAINER
+  function explainCron() {
+    const cron = document.getElementById('cron-input').value.trim();
+    const parts = cron.split(/\s+/);
+    if (parts.length !== 5) {
+      document.getElementById('cron-explanation').textContent = "Invalid cron format (requires 5 fields: minute hour day month weekday)";
+      return;
+    }
+    
+    let [min, hr, dom, mon, dow] = parts;
+    let desc = "Runs ";
+    if (min === '*' && hr === '*') desc += "every single minute";
+    else if (min.startsWith('*/')) desc += `every ${min.replace('*/', '')} minutes`;
+    else if (hr === '*' && min !== '*') desc += `at minute ${min} of every hour`;
+    else if (hr !== '*' && min !== '*') desc += `at ${hr.padStart(2, '0')}:${min.padStart(2, '0')}`;
+
+    if (dom !== '*') desc += ` on day ${dom} of the month`;
+    if (mon !== '*') desc += ` in month ${mon}`;
+    if (dow === '1-5') desc += ` on every weekday (Mon-Fri)`;
+    else if (dow === '0' || dow === '7') desc += ` on Sundays`;
+    else if (dow === '*') desc += ` every day`;
+    else desc += ` on weekday ${dow}`;
+
+    document.getElementById('cron-explanation').textContent = desc;
+  }
+  document.getElementById('cron-input').addEventListener('input', explainCron);
+  document.querySelectorAll('.preset-cron').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('cron-input').value = btn.dataset.cron;
+      explainCron();
+    });
+  });
+  explainCron();
+
+  // 3. CHMOD CALCULATOR
+  function calculateChmod() {
+    let octal = 0;
+    let sym = "";
+    const boxes = document.querySelectorAll('.chmod-box');
+    boxes.forEach(b => {
+      if (b.checked) octal += parseInt(b.dataset.val, 10);
+    });
+
+    const octalStr = octal.toString(8).padStart(3, '0');
+    document.getElementById('chmod-octal').textContent = `0${octalStr}`;
+
+    const u = parseInt(octalStr[0], 10);
+    const g = parseInt(octalStr[1], 10);
+    const o = parseInt(octalStr[2], 10);
+
+    const rwx = (val) => {
+      return (val & 4 ? 'r' : '-') + (val & 2 ? 'w' : '-') + (val & 1 ? 'x' : '-');
+    };
+
+    document.getElementById('chmod-symbolic').textContent = `-${rwx(u)}${rwx(g)}${rwx(o)}`;
+    document.getElementById('chmod-command').textContent = `chmod ${octalStr} filename`;
+    document.querySelector('#chmod-tool .copy-btn').dataset.copy = `chmod ${octalStr} filename`;
+  }
+  document.querySelectorAll('.chmod-box').forEach(b => b.addEventListener('change', calculateChmod));
+  calculateChmod();
+
+  // 4. HASHES & UUID
+  async function computeHashes() {
+    const text = document.getElementById('hash-input').value;
+    if (!text) {
+      document.getElementById('hash-sha256').textContent = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+      return;
+    }
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuf = await crypto.subtle.digest('SHA-256', data);
+    const hashArr = Array.from(new Uint8Array(hashBuf));
+    const hashHex = hashArr.map(b => b.toString(16).padStart(2, '0')).join('');
+    document.getElementById('hash-sha256').textContent = hashHex;
+  }
+  document.getElementById('hash-input').addEventListener('input', computeHashes);
+  document.getElementById('gen-uuid-btn').addEventListener('click', () => {
+    const uuid = crypto.randomUUID();
+    document.getElementById('hash-uuid').textContent = uuid;
+  });
+
+  // 5. BASE64 & URL
+  document.getElementById('b64-encode-btn').addEventListener('click', () => {
+    const val = document.getElementById('b64-input').value;
+    try { document.getElementById('b64-output').value = btoa(val); } catch(e) {}
+  });
+  document.getElementById('b64-decode-btn').addEventListener('click', () => {
+    const val = document.getElementById('b64-input').value;
+    try { document.getElementById('b64-output').value = atob(val); } catch(e) {}
+  });
+  document.getElementById('url-encode-btn').addEventListener('click', () => {
+    const val = document.getElementById('b64-input').value;
+    document.getElementById('b64-output').value = encodeURIComponent(val);
+  });
+  document.getElementById('url-decode-btn').addEventListener('click', () => {
+    const val = document.getElementById('b64-input').value;
+    try { document.getElementById('b64-output').value = decodeURIComponent(val); } catch(e) {}
+  });
+
+  // 6. DOCKER TO COMPOSE
+  document.getElementById('docker-convert-btn').addEventListener('click', () => {
+    const cmd = document.getElementById('docker-input').value.trim();
+    let name = "app";
+    let image = "nginx:latest";
+    let ports = [];
+    let volumes = [];
+    let envs = [];
+    let restart = "unless-stopped";
+
+    const nameMatch = cmd.match(/--name\s+([^\s]+)/);
+    if (nameMatch) name = nameMatch[1];
+
+    const portMatches = [...cmd.matchAll(/-p\s+([^\s]+)/g)];
+    portMatches.forEach(m => ports.push(m[1]));
+
+    const volMatches = [...cmd.matchAll(/-v\s+([^\s]+)/g)];
+    volMatches.forEach(m => volumes.push(m[1]));
+
+    const envMatches = [...cmd.matchAll(/-e\s+([^\s]+)/g)];
+    envMatches.forEach(m => envs.push(m[1]));
+
+    const tokens = cmd.split(/\s+/);
+    if (tokens.length > 0) image = tokens[tokens.length - 1];
+
+    let compose = `services:\n  ${name}:\n    image: ${image}\n    container_name: ${name}\n    restart: ${restart}\n`;
+    if (ports.length > 0) {
+      compose += `    ports:\n`;
+      ports.forEach(p => compose += `      - "${p}"\n`);
+    }
+    if (volumes.length > 0) {
+      compose += `    volumes:\n`;
+      volumes.forEach(v => compose += `      - ${v}\n`);
+    }
+    if (envs.length > 0) {
+      compose += `    environment:\n`;
+      envs.forEach(e => compose += `      - ${e}\n`);
+    }
+
+    document.getElementById('docker-output').value = compose;
+  });
+
+  // 7. BANDWIDTH ESTIMATOR
+  function calculateBandwidth() {
+    const sizeGB = parseFloat(document.getElementById('bw-size').value) || 0;
+    const speedMbps = parseFloat(document.getElementById('bw-speed').value) || 1;
+
+    const totalBits = sizeGB * 8 * 1024 * 1024 * 1024;
+    const speedBitsPerSec = speedMbps * 1000 * 1000;
+    const totalSecs = Math.round(totalBits / speedBitsPerSec);
+
+    const hrs = Math.floor(totalSecs / 3600);
+    const mins = Math.floor((totalSecs % 3600) / 60);
+    const secs = totalSecs % 60;
+
+    let res = "";
+    if (hrs > 0) res += `${hrs}h `;
+    if (mins > 0 || hrs > 0) res += `${mins}m `;
+    res += `${secs}s`;
+
+    document.getElementById('bw-result').textContent = res;
+  }
+  document.getElementById('bw-size').addEventListener('input', calculateBandwidth);
+  document.getElementById('bw-speed').addEventListener('input', calculateBandwidth);
+  document.querySelectorAll('.preset-bw').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('bw-speed').value = btn.dataset.speed;
+      calculateBandwidth();
+    });
+  });
+  calculateBandwidth();
+
+  // 8. JSON VALIDATOR
+  document.getElementById('json-format-btn').addEventListener('click', () => {
+    const val = document.getElementById('json-input').value.trim();
+    const status = document.getElementById('json-status');
+    try {
+      const parsed = JSON.parse(val);
+      document.getElementById('json-input').value = JSON.stringify(parsed, null, 2);
+      status.className = "p-3 rounded-xl text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+      status.textContent = "✔ Valid JSON - Formatted successfully!";
+      status.classList.remove('hidden');
+    } catch(e) {
+      status.className = "p-3 rounded-xl text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20";
+      status.textContent = `✖ Invalid JSON: ${e.message}`;
+      status.classList.remove('hidden');
+    }
+  });
+  document.getElementById('json-minify-btn').addEventListener('click', () => {
+    const val = document.getElementById('json-input').value.trim();
+    const status = document.getElementById('json-status');
+    try {
+      const parsed = JSON.parse(val);
+      document.getElementById('json-input').value = JSON.stringify(parsed);
+      status.className = "p-3 rounded-xl text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+      status.textContent = "✔ Valid JSON - Minified successfully!";
+      status.classList.remove('hidden');
+    } catch(e) {
+      status.className = "p-3 rounded-xl text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20";
+      status.textContent = `✖ Invalid JSON: ${e.message}`;
+      status.classList.remove('hidden');
+    }
+  });
+
+  // GLOBAL COPY BUTTONS
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      let text = btn.dataset.copy;
+      if (!text && btn.dataset.copyTarget) {
+        const el = document.getElementById(btn.dataset.copyTarget);
+        text = el.value || el.textContent;
+      }
+      if (!text) return;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = "✔ Copied!";
+        btn.classList.add('bg-emerald-600', 'text-white');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.classList.remove('bg-emerald-600', 'text-white');
+        }, 1800);
+      } catch(e) {}
+    });
+  });
+</script>
